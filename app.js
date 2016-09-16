@@ -1,3 +1,1 @@
-angular.module('StarWarsApp', ['StarWarsCtrls'])
-
-;
+angular.module('StarWarsApp', ['StarWarsCtrls']);

@@ -15,14 +15,24 @@
   <script src="factories.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body ng-controller="FilmsCtrl" class="text-center">
-  <div ng-show="loading" class="loader">Loading...</div>
-  <div ng-hide="loading">
-    <button class="btn btn-danger" ng-click="showAll()">Show All</button>
-    <div class="well" ng-repeat="film in films | orderBy: 'episode_id'" ng-click="showMovie(film.url)">
-      <h2>{{film.title}} - <small>{{film.episode_id}}</small></h2>
-      <p>{{film.opening_crawl}}</p>
+<body class="text-center">
+  <section ng-controller="FilmsCtrl">
+    <div ng-show="loading" class="loader">Loading...</div>
+    <div ng-hide="loading">
+      <button class="btn btn-danger" ng-click="showAll()">Show All</button>
+      <div class="well" ng-repeat="film in films | orderBy: 'episode_id'" ng-click="showMovie(film.url)">
+        <h2>{{film.title}} - <small>{{film.episode_id}}</small></h2>
+        <p>{{film.opening_crawl}}</p>
+        <button class="btn btn-warning" ng-click="addToFavs(film)">Favorite</button>
+      </div>
     </div>
-  </div>
+  </section>
+  <section ng-controller="JarJarCtrl">
+    <ul>
+      <li ng-repeat="favorite in favorites">
+        <p style="color:white">{{favorite.title}}</p>
+      </li>
+    </ul>
+  </section>
 </body>
 </html>

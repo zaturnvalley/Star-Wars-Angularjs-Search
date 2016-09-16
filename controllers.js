@@ -1,7 +1,10 @@
-angular.module('StarWarsCtrls', ['StarWarsFactories'])
-.controller('FilmsCtrl', ['$scope', 'Films', function($scope, Films) {
+angular.module('StarWarsCtrls', ['StarWarsFactories', 'StarWarsServices'])
+.controller('FilmsCtrl', ['$scope', 'Films', 'JarJar', function($scope, Films, JarJar) {
   $scope.films = [];
   $scope.loading = true;
+
+  console.log("JarJar's Favorites:", JarJar.favorites)
+
   $scope.showAll = function() {
     Films.query(function success(res) {
         console.log(res);
@@ -31,5 +34,13 @@ angular.module('StarWarsCtrls', ['StarWarsFactories'])
     });
   }
 
+  $scope.addToFavs = function(filmObj) {
+    JarJar.favorites.push(filmObj);
+    console.log(JarJar.favorites);
+  }
+
   $scope.showAll();
+}])
+.controller('JarJarCtrl', ['$scope', 'JarJar', function($scope, JarJar) {
+  $scope.favorites = JarJar.favorites;
 }]);
