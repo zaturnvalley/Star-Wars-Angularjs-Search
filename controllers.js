@@ -40,7 +40,7 @@ angular.module('StarWarsCtrls', ['StarWarsFactories', 'StarWarsServices'])
 
   $scope.showAll();
 }])
-.controller('FilmShowCtrl', ['$scope', '$stateParams', 'Films', function($scope, $stateParams, Films) {
+.controller('FilmShowCtrl', ['$scope', '$stateParams', '$state', 'Films', function($scope, $stateParams, $state, Films) {
   $scope.film = {};
 
   Films.get({id: $stateParams.id}, function success(res) {
@@ -48,6 +48,10 @@ angular.module('StarWarsCtrls', ['StarWarsFactories', 'StarWarsServices'])
   }, function error(res) {
     console.log(res);
   });
+
+  $scope.goHome = function() {
+    $state.go('films');
+  }
 }]);
 // .controller('JarJarCtrl', ['$scope', 'JarJar', function($scope, JarJar) {
 //   $scope.favorites = JarJar.favorites;
