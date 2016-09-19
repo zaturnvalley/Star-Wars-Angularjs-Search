@@ -1,5 +1,6 @@
 body {
       background-color: black;
+      font-family: 'Futura';
     }
     .well {
       cursor: pointer;
@@ -64,3 +65,7 @@ body {
         box-shadow: 0 2.5em 0 0;
       }
     }
+#about{
+  color: white;
+  font-size: 30px;
+}

@@ -1,0 +1,20 @@
+<section>
+  <div ng-show="loading" class="loader">Loading...</div>
+  <div ng-hide="loading">
+    <button class="btn btn-danger" ng-click="showAll()">Show All</button>
+    <div class="well" ng-repeat="film in films | orderBy: 'episode_id'" ng-click="showMovie(film.url)">
+      <h2>{{film.title}} - <small>{{film.episode_id}}</small></h2>
+      <p>{{film.opening_crawl}}</p>
+      <button class="btn btn-warning" ng-click="addToFavs(film)">Favorite</button>
+    </div>
+  </div>
+</section>
+
+<!-- JarJar favorites section. Optional for JarJar fans (not many) -->
+<!-- <section>
+  <ul>
+    <li ng-repeat="favorite in favorites">
+      <p style="color:white">{{favorite.title}}</p>
+    </li>
+  </ul>
+</section> -->

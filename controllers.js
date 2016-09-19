@@ -26,7 +26,6 @@ angular.module('StarWarsCtrls', ['StarWarsFactories', 'StarWarsServices'])
     $scope.loading = true;
     var movieId = url[url.length - 2];
     Films.get({id: movieId}, function success(res) {
-      console.log(res);
       $scope.films = [res];
       $scope.loading = false;
     }, function error(res) {

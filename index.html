@@ -9,6 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
   <script src="app.js"></script>
   <script src="controllers.js"></script>
   <script src="services.js"></script>
@@ -16,23 +17,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="text-center">
-  <section ng-controller="FilmsCtrl">
-    <div ng-show="loading" class="loader">Loading...</div>
-    <div ng-hide="loading">
-      <button class="btn btn-danger" ng-click="showAll()">Show All</button>
-      <div class="well" ng-repeat="film in films | orderBy: 'episode_id'" ng-click="showMovie(film.url)">
-        <h2>{{film.title}} - <small>{{film.episode_id}}</small></h2>
-        <p>{{film.opening_crawl}}</p>
-        <button class="btn btn-warning" ng-click="addToFavs(film)">Favorite</button>
-      </div>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Star Wars</a>
     </div>
-  </section>
-  <section ng-controller="JarJarCtrl">
-    <ul>
-      <li ng-repeat="favorite in favorites">
-        <p style="color:white">{{favorite.title}}</p>
-      </li>
-    </ul>
-  </section>
+    <div class="navbar-right">
+      <a class="navbar-brand" href="/#/about">About</a>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+  <div ui-view></div>
 </body>
 </html>
