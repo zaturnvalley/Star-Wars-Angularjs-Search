@@ -22,24 +22,33 @@ angular.module('StarWarsCtrls', ['StarWarsFactories', 'StarWarsServices'])
       console.log(res);
   })
 
-  $scope.showMovie = function(url) {
-    $scope.loading = true;
-    var movieId = url[url.length - 2];
-    Films.get({id: movieId}, function success(res) {
-      $scope.films = [res];
-      $scope.loading = false;
-    }, function error(res) {
-      console.log(res);
-    });
-  }
+  // $scope.showMovie = function(url) {
+  //   $scope.loading = true;
+  //   var movieId = url[url.length - 2];
+  //   Films.get({id: movieId}, function success(res) {
+  //     $scope.films = [res];
+  //     $scope.loading = false;
+  //   }, function error(res) {
+  //     console.log(res);
+  //   });
+  // }
 
-  $scope.addToFavs = function(filmObj) {
-    JarJar.favorites.push(filmObj);
-    console.log(JarJar.favorites);
-  }
+  // $scope.addToFavs = function(filmObj) {
+  //   JarJar.favorites.push(filmObj);
+  //   console.log(JarJar.favorites);
+  // }
 
   $scope.showAll();
 }])
-.controller('JarJarCtrl', ['$scope', 'JarJar', function($scope, JarJar) {
-  $scope.favorites = JarJar.favorites;
+.controller('FilmShowCtrl', ['$scope', '$stateParams', 'Films', function($scope, $stateParams, Films) {
+  $scope.film = {};
+
+  Films.get({id: $stateParams.id}, function success(res) {
+    $scope.film = res;
+  }, function error(res) {
+    console.log(res);
+  });
 }]);
+// .controller('JarJarCtrl', ['$scope', 'JarJar', function($scope, JarJar) {
+//   $scope.favorites = JarJar.favorites;
+// }]);

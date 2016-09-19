@@ -11,6 +11,11 @@ angular.module('StarWarsApp', ['StarWarsCtrls', 'ui.router'])
   .state('about', {
     url: '/about',
     templateUrl: 'views/about.html'
+  })
+  .state('showFilm', {
+    url: '/films/:id',
+    templateUrl: 'views/filmShow.html',
+    controller: 'FilmShowCtrl'
   });
 
   // $locationProvider.html5mode(true);

@@ -1,11 +1,9 @@
 <section>
   <div ng-show="loading" class="loader">Loading...</div>
   <div ng-hide="loading">
-    <button class="btn btn-danger" ng-click="showAll()">Show All</button>
-    <div class="well" ng-repeat="film in films | orderBy: 'episode_id'" ng-click="showMovie(film.url)">
-      <h2>{{film.title}} - <small>{{film.episode_id}}</small></h2>
+    <div class="well" ng-repeat="film in films | orderBy: 'episode_id' track by $index">
+      <h2><a ng-href="/#/films/{{$index + 1}}">{{film.title}}</a> - <small>{{film.episode_id}}</small></h2>
       <p>{{film.opening_crawl}}</p>
-      <button class="btn btn-warning" ng-click="addToFavs(film)">Favorite</button>
     </div>
   </div>
 </section>
